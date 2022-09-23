@@ -7,8 +7,8 @@ app.use(express.static("public"));
 
   app.get("/", async (req, res) => {
     res.json({
-        "answer": "i am here",
-        "response": "and here"
+        "answer": "Miraz is noob",
+        "response": "can't suck boob"
     });
   });
 
