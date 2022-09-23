@@ -1,0 +1,22 @@
+{
+  "name": "oauth_x_slack",
+  "version": "1.0.0",
+  "description": "Slack oAuth 2.0 workFlow",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arian0zen/oAuth_x_Slack.git"
+  },
+  "author": "Ari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arian0zen/oAuth_x_Slack/issues"
+  },
+  "homepage": "https://github.com/arian0zen/oAuth_x_Slack#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
