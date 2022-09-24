@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const { response } = require("express");
 const app = express();
@@ -10,7 +11,7 @@ app.get("/", async (req, res) => {
   });
 });
 app.get("/clickuplogin", async (req, res) => {
-  res.redirect("http:google.com");
+  res.redirect(`https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`);
 });
 
 let port = process.env.PORT;
