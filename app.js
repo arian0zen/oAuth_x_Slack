@@ -28,7 +28,8 @@ app.get("/", async (req, res) => {
     "are you sure?": "you wish",
   });
 });
-app.get("/clickuplogin", async (req, res) => {
+app.get("/clickuplogin&name=samplename", async (req, res) => {
+  const name = req.query.name;
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
@@ -38,6 +39,7 @@ app.get("/clickuplogin", async (req, res) => {
   app.get("/clickup/result", async (req, res) => {
     res.json({
       message: "Success authorized",
+      name: name
     });
   });
 });
