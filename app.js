@@ -43,7 +43,11 @@ app.get("/clickuplogin/:name", async (req, res) => {
     `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
   ).catch(Error)
   var token = bigObject.data.access_token;
-
+    const newUSer = new User({
+      name: userName,
+      token: token
+    })
+    newUSer.save()
     result.json({
       name: userName,
       token: token
