@@ -6,17 +6,10 @@ const { response } = require("express");
 const app = express();
 app.use(express.static("public"));
 
-const uri =
-  "mongodb+srv://" +
-  process.env.DB_USERNAME +
-  ":" +
-  process.env.DB_PASSWORD +
-  "@cluster0.q9xcxma.mongodb.net/" +
-  process.env.DB_NAME;
 
-const connect = async function () {
-  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-};
+  mongoose.connect("mongodb+srv://"+process.env.DB_USERNAME+":"+process.env.DB_PASSWORD+"@cluster0.q9xcxma.mongodb.net/"+process.env.DB_NAME);
+
+
 
 const usersSchema = mongoose.Schema({
   name: Number,
