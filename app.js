@@ -15,7 +15,7 @@ app.get("/clickuplogin", async (req, res) => {
 });
 app.get("/slack/clickup/oauth", async (req, res) => {
   console.log(req.params.code)
-  window.close();
+  res.redirect("clickup.com")
 });
 
 
