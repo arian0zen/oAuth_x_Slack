@@ -42,12 +42,12 @@ app.get("/clickuplogin/:name", async (req, res) => {
   });
   app.get("/clickup/result", async (requestt, resultt) => {
     let code = requestt.query.code;
-
+    const token = await axios.post(`https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`)
     resultt.json({
       name: userName,
       code: requestt.query.code,
       message: "Success authorized",
-      token:  await axios.post(`https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`)
+      token:  token
     });
   });
 });
