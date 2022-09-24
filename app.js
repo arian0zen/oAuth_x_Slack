@@ -51,10 +51,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
         message: "success",
       });
     });
-    // result.json({
-    //   name: userName,
-    //   token: token,
-    // });
   });
 });
 
