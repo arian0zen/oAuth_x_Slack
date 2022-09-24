@@ -39,7 +39,7 @@ app.get("/clickuplogin&name=samplename", async (req, res) => {
   app.get("/clickup/result", async (req, res) => {
     res.json({
       message: "Success authorized",
-      name: name
+      name: `what`
     });
   });
 });
