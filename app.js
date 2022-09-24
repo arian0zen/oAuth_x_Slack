@@ -28,19 +28,21 @@ app.get("/", async (req, res) => {
     "are you sure?": "you wish",
   });
 });
-app.get("/clickuplogin?name=samplename", async (req, res) => {
-  const name = req.query.name;
+app.get("/clickuplogin/:name", async (req, res) => {
+  const userName = req.params.name
+  // console.log(userName);
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
   app.get("/slack/clickup/oauth", async (req, res) => {
     res.redirect("/clickup/result");
   });
-  app.get("/clickup/result", async (req, res) => {
-    res.json({
-      message: "Success authorized",
-      name: `what`
-    });
+});
+
+app.get("/clickup/result", async (req, res) => {
+  res.json({
+    message: "Success authorized",
+    name: `what`
   });
 });
 
