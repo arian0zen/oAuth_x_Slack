@@ -38,22 +38,12 @@ app.get("/clickuplogin/:name", async (req, res) => {
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
     const code = request.query.code;
-    result.redirect(`/clickup/result?code=${code}&name=${userName}`);
+    result.json({
+      code: code,
+      name: userName
+    })
   });
-  app.get("/clickup/result", async (requestt, resultt) => {
-    let codee = requestt.query.code;
-    let usernamee = requestt.query.name;
-    let vari = await axios .post(
-      `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${codee}`
-    ).catch(Error)
 
-    resultt.json({
-      name: usernamee,
-      code: requestt.query.code,
-      message: "Success authorized",
-      token:  vari
-    });
-  });
 });
 
 app.get("/api/token", async (req, res) => {
