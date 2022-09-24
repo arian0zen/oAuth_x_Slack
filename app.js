@@ -37,7 +37,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
     result.json({
-      url: request
+      url: "uusgf"
     });
   });
   app.get("/clickup/result", async (requestt, resultt) => {
