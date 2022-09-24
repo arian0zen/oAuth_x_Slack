@@ -44,9 +44,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
   ).catch(Error)
   var token = bigObject.data.access_token;
 
-
     result.json({
-      code: code,
       name: userName,
       token: token
     })
@@ -54,21 +52,8 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 });
 
-app.get("/api/token", async (req, res) => {
-  const vari = await axios .post(
-      `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=10UT8TO9Z9KDA2L4KI9W3R8PQEQ2O280`
-    ).catch(Error)
-    // console.log(vari.data.access_token)
-});
 
-// resultt.json({
-//   name: userName,
-//   code: requestt.query.code,
-//   message: "Success authorized",
-// });
-// await axios.post(
-//   `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
-// )
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 80;
@@ -77,3 +62,13 @@ if (port == null || port == "") {
 app.listen(port, () => {
   console.log("listening on port " + port);
 });
+
+
+
+
+// app.get("/api/token", async (req, res) => {
+//   const vari = await axios .post(
+//       `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=10UT8TO9Z9KDA2L4KI9W3R8PQEQ2O280`
+//     ).catch(Error)
+//     // console.log(vari.data.access_token)
+// });
