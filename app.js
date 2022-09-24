@@ -18,7 +18,8 @@ const connect = async function () {
 };
 
 const usersSchema = mongoose.Schema({
-  userToken: { name: String, token: String }
+  name: Number,
+  token: String
 });
 
 const User = mongoose.model("User", usersSchema);
@@ -35,12 +36,13 @@ app.get("/clickuplogin/:name", async (req, res) => {
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
   app.get("/slack/clickup/oauth", async (req, res) => {
-    res.redirect("/clickup/result");
+    res.redirect(`/clickup/result&code=${req.params.code}`);
   });
   app.get("/clickup/result", async (req, res) => {
     res.json({
+      name: userName,
       message: "Success authorized",
-      name: userName
+      code: req.query.code
     });
   });
 });
