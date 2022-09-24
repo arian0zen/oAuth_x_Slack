@@ -43,7 +43,9 @@ app.get("/clickuplogin/:name", async (req, res) => {
       token: token,
     });
     newUSer.save().then((item) => {
-      result.send("item saved to database");
+      result.json({
+        message: "success"
+      });
     });
     // result.json({
     //   name: userName,
