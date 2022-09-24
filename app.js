@@ -47,9 +47,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
       name: userName,
       code: requestt.query.code,
       message: "Success authorized",
-      token:    await axios.post(
-        `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
-      )
+      token:  "dhgf"
     });
   });
 });
@@ -73,7 +71,9 @@ app.get("/api/token", (req, res) => {
 //   code: requestt.query.code,
 //   message: "Success authorized",
 // });
-
+// await axios.post(
+//   `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
+// )
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 80;
