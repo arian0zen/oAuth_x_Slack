@@ -13,6 +13,13 @@ app.get("/", async (req, res) => {
 app.get("/clickuplogin", async (req, res) => {
   res.redirect(`https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`);
 });
+app.get("/slack/clickup/oauth", async (req, res) => {
+  console.log(req.params.code)
+  window.close();
+});
+
+
+
 
 let port = process.env.PORT;
 if (port == null || port == "") {
