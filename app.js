@@ -18,7 +18,7 @@ app.get("/slack/clickup/oauth", async (req, res) => {
   res.redirect("/clickup/result");
 });
 app.get("/clickup/result", async (req, res) => {
-  res.redirect({
+  res.json({
     "message": "Success authorized"
   });
 });
