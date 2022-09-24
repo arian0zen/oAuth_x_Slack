@@ -36,17 +36,14 @@ app.get("/clickuplogin/:name", async (req, res) => {
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
-    const host = req.hostname;
-    const url = req.originalUrl;
-    const fullUrl = `${protocol}://${host}:${port}${url}`
-    result.json({code: fullUrl})
-    // result.redirect(`/clickup/result&code=${request.params.code}`);
+    result.json({
+      url: request
+    });
   });
   app.get("/clickup/result", async (requestt, resultt) => {
     resultt.json({
       name: userName,
       message: "Success authorized",
-      code: req.query.code
     });
   });
 });
