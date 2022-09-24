@@ -47,15 +47,14 @@ app.get("/clickuplogin/:name", async (req, res) => {
     .then((res) => {
       console.log(`statusCode: ${res.statusCode}`);
       console.log(res);
-      resultt.json({
-        name: userName,
-        code: requestt.query.code,
-        message: "Success authorized",
-        token: res
-      });
     })
     .catch((error) => {
       console.error(error);
+    });
+    resultt.json({
+      name: userName,
+      code: requestt.query.code,
+      message: "Success authorized",
     });
   });
 
