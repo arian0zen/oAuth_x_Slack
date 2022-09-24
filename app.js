@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const axios = require("axios");
 const { response } = require("express");
 const app = express();
 app.use(express.static("public"));
@@ -19,7 +20,7 @@ const connect = async function () {
 
 const usersSchema = mongoose.Schema({
   name: Number,
-  token: String
+  token: String,
 });
 
 const User = mongoose.model("User", usersSchema);
@@ -30,25 +31,48 @@ app.get("/", async (req, res) => {
   });
 });
 app.get("/clickuplogin/:name", async (req, res) => {
-  const userName = req.params.name
+  const userName = req.params.name;
   // console.log(userName);
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
-    const code = request.query.code
-    result.redirect(`/clickup/result?code=${code}`)
+    const code = request.query.code;
+    result.redirect(`/clickup/result?code=${code}`);
   });
   app.get("/clickup/result", async (requestt, resultt) => {
-    resultt.json({
-      name: userName,
-      code: requestt.query.code,
-      message: "Success authorized"
+    let code = requestt.query.code;
+    axios
+    .post(`https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`)
+    .then((res) => {
+      console.log(`statusCode: ${res.statusCode}`);
+      console.log(res);
+      resultt.json({
+        name: userName,
+        code: requestt.query.code,
+        message: "Success authorized",
+        token: res
+      });
+    })
+    .catch((error) => {
+      console.error(error);
     });
   });
+
 });
 
 
+app.get('/api/token', (req, res) => {
+  axios
+  .post(`https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=FB99NJHCB27Q88K3KOQO7CSEIL0ELPS5`)
+  .then((res) => {
+    console.log(`statusCode: ${res.statusCode}`);
+    console.log(res);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+})
 
 
 
