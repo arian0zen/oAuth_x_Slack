@@ -38,25 +38,26 @@ app.get("/clickuplogin/:name", async (req, res) => {
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
     const code = request.query.code;
-  //a post request here
-  const bigObject = await axios .post(
-    `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
-  ).catch(Error)
-  var token = bigObject.data.access_token;
+    //a post request here
+    const bigObject = await axios
+      .post(
+        `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
+      )
+      .catch(Error);
+    var token = bigObject.data.access_token;
     const newUSer = new User({
       name: userName,
-      token: token
-    })
-    newUSer.save()
-    result.json({
-      name: userName,
-      token: token
-    })
+      token: token,
+    });
+    newUSer.save().then((item) => {
+      result.send("item saved to database");
+    });
+    // result.json({
+    //   name: userName,
+    //   token: token,
+    // });
   });
-
 });
-
-
 
 let port = process.env.PORT;
 if (port == null || port == "") {
@@ -66,9 +67,6 @@ if (port == null || port == "") {
 app.listen(port, () => {
   console.log("listening on port " + port);
 });
-
-
-
 
 // app.get("/api/token", async (req, res) => {
 //   const vari = await axios .post(
