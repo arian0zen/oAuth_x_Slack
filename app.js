@@ -36,7 +36,8 @@ app.get("/clickuplogin/:name", async (req, res) => {
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
-    result.redirect(`/clickup/result&code=${request.params.code}`);
+    result.json({code: request.params.code})
+    // result.redirect(`/clickup/result&code=${request.params.code}`);
   });
   app.get("/clickup/result", async (requestt, resultt) => {
     resultt.json({
