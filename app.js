@@ -38,9 +38,13 @@ app.get("/clickuplogin/:name", async (req, res) => {
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
     const code = request.query.code;
+    const vari = await axios .post(
+      `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
+    ).catch(Error)
     result.json({
       code: code,
-      name: userName
+      name: userName,
+      token: vari
     })
   });
 
