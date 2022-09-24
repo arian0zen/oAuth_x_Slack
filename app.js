@@ -40,7 +40,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     const code = request.query.code;
   //a post request here
   const bigObject = await axios .post(
-    `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=ULA6UEL2WFKAVPVGJ2R8Q49DXVFHSYYS`
+    `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
   ).catch(Error)
   var token = bigObject.data.access_token;
 
