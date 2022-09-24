@@ -6,10 +6,14 @@ const { response } = require("express");
 const app = express();
 app.use(express.static("public"));
 
-
-mongoose.connect("mongodb+srv://"+process.env.DB_USERNAME+":"+process.env.DB_PASSWORD+"@cluster0.q9xcxma.mongodb.net/"+process.env.DB_NAME);
-
-
+mongoose.connect(
+  "mongodb+srv://" +
+    process.env.DB_USERNAME +
+    ":" +
+    process.env.DB_PASSWORD +
+    "@cluster0.q9xcxma.mongodb.net/" +
+    process.env.DB_NAME
+);
 
 const usersSchema = mongoose.Schema({
   name: String,
@@ -44,7 +48,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     });
     newUSer.save().then((item) => {
       result.json({
-        message: "success"
+        message: "success",
       });
     });
     // result.json({
