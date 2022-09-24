@@ -45,7 +45,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     let usernamee = requestt.query.name;
     let vari = await axios .post(
       `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${codee}`
-    )
+    ).catch(Error)
 
     resultt.json({
       name: usernamee,
@@ -56,11 +56,12 @@ app.get("/clickuplogin/:name", async (req, res) => {
   });
 });
 
-// app.get("/api/token", async (req, res) => {
-//   const vari = await axios .post(
-//       `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=FB99NJHCB27Q88K3KOQO7CSEIL0ELPS5`
-//     )
-// });
+app.get("/api/token", async (req, res) => {
+  const vari = await axios .post(
+      `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=FB99NJHCB27Q88K3KOQO7CSEIL0ELPS5`
+    ).catch(Error)
+    console.log(vari)
+});
 
 // resultt.json({
 //   name: userName,
