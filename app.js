@@ -38,31 +38,28 @@ app.get("/clickuplogin/:name", async (req, res) => {
   );
   app.get("/slack/clickup/oauth", async (request, result) => {
     const code = request.query.code;
-    result.redirect(`/clickup/result?code=${code}`);
+    result.redirect(`/clickup/result?code=${code}&name=${userName}`);
   });
   app.get("/clickup/result", async (requestt, resultt) => {
-    let code = requestt.query.code;
-    const token = await axios.post(`https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`)
+    let codee = requestt.query.code;
+    let usernamee = requestt.query.name;
+    let vari = await axios .post(
+      `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${codee}`
+    )
+
     resultt.json({
-      name: userName,
+      name: usernamee,
       code: requestt.query.code,
       message: "Success authorized",
-      token:  token
+      token:  vari
     });
   });
 });
 
-// app.get("/api/token", (req, res) => {
-//   axios .post(
+// app.get("/api/token", async (req, res) => {
+//   const vari = await axios .post(
 //       `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=FB99NJHCB27Q88K3KOQO7CSEIL0ELPS5`
 //     )
-//     .then((res) => {
-//       console.log(`statusCode: ${res.statusCode}`);
-//       console.log(res);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
 // });
 
 // resultt.json({
