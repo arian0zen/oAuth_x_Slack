@@ -30,6 +30,8 @@ app.get("/", async (req, res) => {
 });
 
 var tumi = "";
+var code = "";
+var token = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   // var userName_slack = req.params.name;
@@ -38,13 +40,13 @@ app.get("/clickuplogin/:name", async (req, res) => {
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   )
   app.get("/slack/clickup/oauth", async (request, result) => {
-    const code = request.query.code;
+    code = request.query.code;
     const bigObject = await axios
       .post(
         `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
       )
       .catch(Error);
-    var token = bigObject.data.access_token;
+    token = bigObject.data.access_token;
 
     let newUSer = new User({
       name: tumi,
