@@ -30,9 +30,11 @@ app.get("/", async (req, res) => {
 });
 
 var arr= ["aal", "baz", "cislo"]
+var tumi = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   var userName_slack = req.params.name;
+  tumi = req.params.name;
   console.log(userName_slack)
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
@@ -56,7 +58,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     newUSer.save().then((item) => {
       result.json({
         code: code,
-        // message: arr[Math.floor(Math.random()*items.length)],
+        message: tumi,
         name: userName_slack
       });
 
