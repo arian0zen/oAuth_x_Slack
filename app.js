@@ -36,6 +36,7 @@ var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   user_slack = req.params.name;
+  res.send("baal")
   // res.redirect(
   //   `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   // )
