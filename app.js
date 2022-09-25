@@ -29,50 +29,46 @@ app.get("/", async (req, res) => {
   });
 });
 
-// var user_slack = "";
+var user_slack = "";
 var code = "";
 var token = "";
 var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
-  var user_slack = req.params.name;
-  res.json({
-    hfh:"fsihfsd"
-  })
-  // res.redirect(
-  //   `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
-  // )
+  user_slack = req.params.name;
+  res.redirect(
+    `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
+  )
   app.get("/slack/clickup/oauth", async (request, result) => {
     code = request.query.code;
-    // const bigObject = await axios
-    //   .post(
-    //     `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
-    //   )
-    //   .catch(Error);
-    // token = bigObject.data.access_token;
-    // const header_token = {
-    //   headers:{
-    //     'Authorization': token 
-    //   }
-    // }
-    
-    // const bigObject2 = await axios
-    //   .get(
-    //     `https://api.clickup.com/api/v2/user`, header_token
-    //   )
-    //   .catch(Error);
-    // username = bigObject2.data.user.id
+    const bigObject = await axios
+      .post(
+        `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
+      )
+      .catch(Error);
+    token = bigObject.data.access_token;
+    const header_token = {
+      headers:{
+        'Authorization': token 
+      }
+    }
+    const bigObject2 = await axios
+      .get(
+        `https://api.clickup.com/api/v2/user`, header_token
+      )
+      .catch(Error);
+    username = bigObject2.data.user.id
+
 
     let newUSer = new User({
       name: user_slack,
-      // token: token,
-      // clickup_name: username
+      token: token,
+      clickup_name: username
     });
     newUSer.save().then((item) => {
       result.json({
         message: "success, you can use the bot now"
       });
-
 
     });
   });
