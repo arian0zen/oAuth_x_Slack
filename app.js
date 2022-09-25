@@ -35,8 +35,8 @@ var token = "";
 var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
-  // var userName_slack = req.params.name;
-  tumi = req.params.name;
+  var userName_slack = req.params.name;
+  // tumi = req.params.name;
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   )
@@ -65,7 +65,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
     let newUSer = new User({
-      name: tumi,
+      name: userName_slack,
       token: token,
       clickup_name: username
     });
