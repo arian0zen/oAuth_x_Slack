@@ -29,13 +29,13 @@ app.get("/", async (req, res) => {
   });
 });
 
-var user_slack = "";
+// var user_slack = "";
 var code = "";
 var token = "";
 var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
-  user_slack = req.params.name;
+  var user_slack = req.params.name;
   res.json({
     hfh:"fsihfsd"
   })
@@ -44,29 +44,29 @@ app.get("/clickuplogin/:name", async (req, res) => {
   // )
   app.get("/slack/clickup/oauth", async (request, result) => {
     code = request.query.code;
-    const bigObject = await axios
-      .post(
-        `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
-      )
-      .catch(Error);
-    token = bigObject.data.access_token;
-    const header_token = {
-      headers:{
-        'Authorization': token 
-      }
-    }
+    // const bigObject = await axios
+    //   .post(
+    //     `https://api.clickup.com/api/v2/oauth/token?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&code=${code}`
+    //   )
+    //   .catch(Error);
+    // token = bigObject.data.access_token;
+    // const header_token = {
+    //   headers:{
+    //     'Authorization': token 
+    //   }
+    // }
     
-    const bigObject2 = await axios
-      .get(
-        `https://api.clickup.com/api/v2/user`, header_token
-      )
-      .catch(Error);
-    username = bigObject2.data.user.id
+    // const bigObject2 = await axios
+    //   .get(
+    //     `https://api.clickup.com/api/v2/user`, header_token
+    //   )
+    //   .catch(Error);
+    // username = bigObject2.data.user.id
 
     let newUSer = new User({
       name: user_slack,
-      token: token,
-      clickup_name: username
+      // token: token,
+      // clickup_name: username
     });
     newUSer.save().then((item) => {
       result.json({
