@@ -47,8 +47,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
         'Content-Type': 'application/json',
                       "Authorization": token 
       }
-      
-
     }
     const bigObject2 = await axios
       .get(
