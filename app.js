@@ -56,7 +56,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
         `https://api.clickup.com/api/v2/user`, header_token
       )
       .catch(Error);
-    var username = bigObject2.user.id
+    var username = bigObject2.data.user.id
     const newUSer = new User({
       name: userName,
       token: token,
@@ -80,13 +80,19 @@ app.listen(port, () => {
 });
 
 // app.get("/api/token", async (req, res) => {
-//   const newUSer = new User({
-//     name: "arian",
-//     token: "arian",
-//   });
-//   newUSer.save().then((item) => {
-//     res.json({
-//       message: "success"
-//     });
-//   });
+//   const header_token = {
+//     headers:{
+//       'Content-Type': 'application/json',
+//                     "Authorization": "61229302_dee5bfed31825831408aa07ce1119d41393eb2d6"
+//     }
+    
+
+//   }
+//   const bigObject2 = await axios
+//       .get(
+//         `https://api.clickup.com/api/v2/user`, header_token
+//       )
+//       .catch(Error);
+//     var username = bigObject2.data.user.id
+//     console.log(username);
 // });
