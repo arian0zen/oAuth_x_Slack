@@ -65,7 +65,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 
-    let newUSer = await new User.create({
+    let newUSer = await  User.create({
       name: userName_slack,
       token: token,
       clickup_name: username
