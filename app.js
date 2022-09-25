@@ -32,10 +32,7 @@ app.get("/", async (req, res) => {
 var tumi = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
-  var userJson= {
-    name: req.params.name,
-  }
-  var userName_slack = req.params.name;
+  // var userName_slack = req.params.name;
   tumi = req.params.name;
   console.log(userName_slack)
   res.redirect(
@@ -53,13 +50,12 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
     console.log(userName_slack);
     let newUSer = new User({
-      name: userName_slack,
+      name: tumi,
       token: token,
     });
     newUSer.save().then((item) => {
       result.json({
-        item,
-        userJson
+        message: "success, you can use the bot now"
       });
 
 
