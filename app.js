@@ -29,8 +29,7 @@ app.get("/", async (req, res) => {
   });
 });
 app.get("/clickuplogin/:name", async (req, res) => {
-  const userName = req.params.name;
-  // console.log(userName);
+  const userName_slack = req.params.name;
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
@@ -58,7 +57,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
       .catch(Error);
     var username = bigObject2.data.user.id
     const newUSer = new User({
-      name: userName,
+      name: userName_slack,
       token: token,
       clickup_name: username
     });
@@ -79,20 +78,4 @@ app.listen(port, () => {
   console.log("listening on port " + port);
 });
 
-// app.get("/api/token", async (req, res) => {
-//   const header_token = {
-//     headers:{
-//       'Content-Type': 'application/json',
-//                     "Authorization": "61229302_dee5bfed31825831408aa07ce1119d41393eb2d6"
-//     }
-    
 
-//   }
-//   const bigObject2 = await axios
-//       .get(
-//         `https://api.clickup.com/api/v2/user`, header_token
-//       )
-//       .catch(Error);
-//     var username = bigObject2.data.user.id
-//     console.log(username);
-// });
