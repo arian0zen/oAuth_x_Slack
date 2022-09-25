@@ -52,7 +52,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
     console.log(userName_slack);
     let newUSer = new User({
-      name: tumi,
+      name: userName_slack,
       token: token,
       clickup_name: arr[Math.floor(Math.random()*arr.length)]
     });
