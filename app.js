@@ -32,6 +32,7 @@ app.get("/", async (req, res) => {
 var tumi = "";
 var code = "";
 var token = "";
+var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   // var userName_slack = req.params.name;
@@ -47,10 +48,26 @@ app.get("/clickuplogin/:name", async (req, res) => {
       )
       .catch(Error);
     token = bigObject.data.access_token;
+    const header_token = {
+      headers:{
+        'Authorization': token 
+      }
+    }
+    
+    const bigObject2 = await axios
+      .get(
+        `https://api.clickup.com/api/v2/user`, header_token
+      )
+      .catch(Error);
+    username = bigObject2.data.user.id
+
+
+
 
     let newUSer = new User({
       name: tumi,
       token: token,
+      clickup_name: username
     });
     newUSer.save().then((item) => {
       result.json({
@@ -69,18 +86,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 
-    // const header_token = {
-    //   headers:{
-    //     'Authorization': token 
-    //   }
-    // }
-    
-    // const bigObject2 = await axios
-    //   .get(
-    //     `https://api.clickup.com/api/v2/user`, header_token
-    //   )
-    //   .catch(Error);
-    // var username = bigObject2.data.user.id
+
 
 
 
