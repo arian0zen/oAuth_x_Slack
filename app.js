@@ -29,12 +29,10 @@ app.get("/", async (req, res) => {
   });
 });
 
-var arr= ["aal", "baz", "cislo"]
 var tumi = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
-  var userName_slack = "";
-  userName_slack = req.params.name;
+  let userName_slack = req.params.name;
   tumi = req.params.name;
   console.log(userName_slack)
   res.redirect(
@@ -54,7 +52,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
     let newUSer = new User({
       name: userName_slack,
       token: token,
-      clickup_name: arr[Math.floor(Math.random()*arr.length)]
     });
     newUSer.save().then((item) => {
       result.json({
