@@ -29,14 +29,13 @@ app.get("/", async (req, res) => {
   });
 });
 
-var tumi = "";
+var user_slack = "";
 var code = "";
 var token = "";
 var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
-  var userName_slack = req.params.name;
-  console.log(userName_slack);
+  user_slack = req.params.name;
   // tumi = req.params.name;
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
@@ -65,21 +64,19 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 
-    let newUSer = await  User.create({
+    let newUSer = new User({
       name: userName_slack,
       token: token,
       clickup_name: username
     });
-    if(!newUSer){
+    newUSer.save().then((item) => {
       result.json({
-        response: "400 ",
-      })
-    } else{
-      result.json({
-        response: "200 "
-      })
-    }
+        message: "success, you can use the bot now"
+      });
 
+
+
+    });
   });
 });
 
