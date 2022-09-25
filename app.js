@@ -57,9 +57,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     });
     newUSer.save().then((item) => {
       result.json({
-        code: code,
-        message: tumi,
-        name: userName_slack
+        item
       });
 
 
