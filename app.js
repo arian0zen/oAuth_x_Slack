@@ -64,6 +64,10 @@ app.get("/clickuplogin/:name", async (req, res) => {
         name: userName_slack
       });
     });
+    // result.json({
+    //   name: userName,
+    //   token: token,
+    // });
   });
 });
 
