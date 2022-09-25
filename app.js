@@ -54,7 +54,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
       )
       .catch(Error);
     var username = bigObject2.data.user.id
-    const newUSer = new User({
+    let newUSer = new User({
       name: userName_slack,
       token: token,
       clickup_name: username
@@ -62,6 +62,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     newUSer.save().then((item) => {
       result.json({
         message: "success",
+        name: userName_slack
       });
     });
   });
