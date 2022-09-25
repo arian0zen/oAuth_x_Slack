@@ -18,6 +18,7 @@ mongoose.connect(
 const usersSchema = mongoose.Schema({
   name: String,
   token: String,
+  clickup_name: String
 });
 
 const User = mongoose.model("User", usersSchema);
@@ -42,9 +43,21 @@ app.get("/clickuplogin/:name", async (req, res) => {
       )
       .catch(Error);
     var token = bigObject.data.access_token;
+    const header_token = {
+      'Content-Type': 'application/json',
+                      "Authorization": token 
+
+    }
+    const bigObject2 = await axios
+      .get(
+        `https://api.clickup.com/api/v2/user`, header_token
+      )
+      .catch(Error);
+    var username = bigObject2.user.id
     const newUSer = new User({
       name: userName,
       token: token,
+      clickup_name: username
     });
     newUSer.save().then((item) => {
       result.json({
