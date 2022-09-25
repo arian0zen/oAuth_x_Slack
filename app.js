@@ -34,7 +34,6 @@ var tumi = "";
 app.get("/clickuplogin/:name", async (req, res) => {
   // var userName_slack = req.params.name;
   tumi = req.params.name;
-  console.log(userName_slack)
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   )
@@ -57,6 +56,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
       result.json({
         message: "success, you can use the bot now"
       });
+
 
 
     });
