@@ -32,6 +32,7 @@ app.get("/", async (req, res) => {
 
 app.get("/clickuplogin/:name", async (req, res) => {
   var userName_slack = req.params.name;
+  console.log(userName_slack)
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
   );
@@ -48,6 +49,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     //     'Authorization': token 
     //   }
     // }
+    
     // const bigObject2 = await axios
     //   .get(
     //     `https://api.clickup.com/api/v2/user`, header_token
