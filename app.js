@@ -29,6 +29,7 @@ app.get("/", async (req, res) => {
   });
 });
 
+var arr= ["aal", "baz", "cislo"]
 
 app.get("/clickuplogin/:name", async (req, res) => {
   var userName_slack = req.params.name;
@@ -50,16 +51,16 @@ app.get("/clickuplogin/:name", async (req, res) => {
     let newUSer = new User({
       name: userName_slack,
       token: token,
-      clickup_name: 'ar'
+      clickup_name: arr[Math.floor(Math.random()*items.length)]
     });
     newUSer.save().then((item) => {
       result.json({
         code: code,
-        message: "success",
+        // message: arr[Math.floor(Math.random()*items.length)],
         name: userName_slack
       });
 
-      
+
     });
   });
 });
