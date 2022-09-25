@@ -46,8 +46,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
       .catch(Error);
     var token = bigObject.data.access_token;
 
-
-    console.log(userName_slack);
     let newUSer = new User({
       name: tumi,
       token: token,
