@@ -36,6 +36,7 @@ var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   var userName_slack = req.params.name;
+  console.log(userName_slack);
   // tumi = req.params.name;
   res.redirect(
     `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
@@ -64,19 +65,21 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 
-    let newUSer = new User({
+    let newUSer = await new User.create({
       name: userName_slack,
       token: token,
       clickup_name: username
     });
-    newUSer.save().then((item) => {
+    if(!newUSer){
       result.json({
-        message: "success, you can use the bot now"
-      });
+        response: "400 ",
+      })
+    } else{
+      result.json({
+        response: "200 "
+      })
+    }
 
-
-
-    });
   });
 });
 
