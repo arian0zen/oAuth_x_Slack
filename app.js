@@ -30,10 +30,11 @@ app.get("/", async (req, res) => {
 });
 
 var arr= ["aal", "baz", "cislo"]
-var tumi = "";
+
 
 app.get("/clickuplogin/:name", async (req, res) => {
   var userName_slack = req.params.name;
+  var tumi = "";
   tumi = userName_slack;
   console.log(userName_slack)
   res.redirect(
