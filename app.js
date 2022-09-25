@@ -33,9 +33,9 @@ app.get("/", async (req, res) => {
 app.get("/clickuplogin/:name", async (req, res) => {
   var userName_slack = req.params.name;
   console.log(userName_slack)
-  res.redirect(
-    `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
-  );
+  res.json({
+    hf:"sfh"
+  })
   app.get("/slack/clickup/oauth", async (request, result) => {
     const code = request.query.code;
     const bigObject = await axios
