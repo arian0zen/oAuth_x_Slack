@@ -51,7 +51,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     let newUSer = new User({
       name: userName_slack,
       token: token,
-      clickup_name: arr[Math.floor(Math.random()*items.length)]
+      clickup_name: arr[Math.floor(Math.random()*arr.length)]
     });
     newUSer.save().then((item) => {
       result.json({
