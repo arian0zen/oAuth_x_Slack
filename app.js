@@ -36,9 +36,9 @@ var username = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   user_slack = req.params.name;
-  res.redirect(
-    `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
-  )
+  // res.redirect(
+  //   `https://app.clickup.com/api?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`
+  // )
   app.get("/slack/clickup/oauth", async (request, result) => {
     code = request.query.code;
     const bigObject = await axios
@@ -60,9 +60,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
       .catch(Error);
     username = bigObject2.data.user.id
 
-
-
-
     let newUSer = new User({
       name: user_slack,
       token: token,
@@ -72,7 +69,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
       result.json({
         message: "success, you can use the bot now"
       });
-
 
 
     });
