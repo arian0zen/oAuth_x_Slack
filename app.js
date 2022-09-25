@@ -35,6 +35,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
   var userJson= {
     name: req.params.name,
   }
+  var userName_slack = req.params.name;
   tumi = req.params.name;
   console.log(userName_slack)
   res.redirect(
@@ -52,7 +53,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
     console.log(userName_slack);
     let newUSer = new User({
-      name: tumi,
+      name: userName_slack,
       token: token,
     });
     newUSer.save().then((item) => {
