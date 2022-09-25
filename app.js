@@ -44,8 +44,11 @@ app.get("/clickuplogin/:name", async (req, res) => {
       .catch(Error);
     var token = bigObject.data.access_token;
     const header_token = {
-      'Content-Type': 'application/json',
+      headers:{
+        'Content-Type': 'application/json',
                       "Authorization": token 
+      }
+      
 
     }
     const bigObject2 = await axios
