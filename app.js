@@ -60,10 +60,15 @@ app.get("/clickuplogin/:name", async (req, res) => {
       .catch(Error);
     username = bigObject2.data.user.id
     
-    const getSpace = await axios
+    const getTeam = await axios
     .get(`https://api.clickup.com/api/v2/team`, header_token)
     .catch(Error);
-    var spaceId = getSpace.data.teams[0].id
+    var teamId = getTeam.data.teams[0].id ;
+
+    const getSpace = await axios
+    .get(`https://api.clickup.com/api/v2/team/${teamId}/space`, header_token)
+    .catch(Error);
+    var spaceId = getSpace.data.spaces[0].id ;
 
     
     const addList = await axios
