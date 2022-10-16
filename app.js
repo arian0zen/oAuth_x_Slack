@@ -60,11 +60,30 @@ app.get("/clickuplogin/:name", async (req, res) => {
       .catch(Error);
     username = bigObject2.data.user.id
     
-    const addList = await axios
+    const getSpace = await axios
     .get(`https://api.clickup.com/api/v2/team`, header_token)
     .catch(Error);
-    var spaceId = addList.data.teams[0].id
+    var spaceId = getSpace.data.teams[0].id
 
+
+    const addList = await axios
+    .post(
+      `https://api.clickup.com/api/v2/space/${spaceId}/list`,
+      {
+        body: {
+          name: "added from slackUp"
+        }
+      },
+      {
+        headers: { 
+          'Authorization': token,
+          'Content-Type' : 'application/json' 
+        }
+      }
+    )
+    .catch(Error);
+
+  
     let newUSer = new User({
       name: user_slack,
       token: token,
@@ -73,7 +92,8 @@ app.get("/clickuplogin/:name", async (req, res) => {
     newUSer.save().then((item) => {
       result.json({
         message: "success, you can use the bot now",
-        spaceId: spaceId
+        spaceId: spaceId,
+        addResponse: addList
       
       });
 
