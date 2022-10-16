@@ -65,7 +65,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
     .catch(Error);
     var spaceId = getSpace.data.teams[0].id
 
-
+    
     const addList = await axios
     .post(
       `https://api.clickup.com/api/v2/space/${spaceId}/list`,
@@ -81,7 +81,10 @@ app.get("/clickuplogin/:name", async (req, res) => {
         }
       }
     )
-    .catch(Error);
+    .then(response => {
+      console.log(response);
+    });
+
 
   
     let newUSer = new User({
@@ -93,27 +96,13 @@ app.get("/clickuplogin/:name", async (req, res) => {
       result.json({
         message: "success, you can use the bot now",
         spaceId: spaceId,
-        addResponse: addList
+        response: addList
       
       });
 
     });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
