@@ -33,6 +33,7 @@ var user_slack = "";
 var code = "";
 var token = "";
 var username = "";
+var addedListId = "";
 
 app.get("/clickuplogin/:name", async (req, res) => {
   user_slack = req.params.name;
@@ -58,7 +59,11 @@ app.get("/clickuplogin/:name", async (req, res) => {
       )
       .catch(Error);
     username = bigObject2.data.user.id
-
+    
+    const addList = await axios
+    .get(`https://api.clickup.com/api/v2/team`, header_token)
+    .catch(Error);
+    var spaceId = addList.data.teams[0].id
 
     let newUSer = new User({
       name: user_slack,
@@ -67,7 +72,9 @@ app.get("/clickuplogin/:name", async (req, res) => {
     });
     newUSer.save().then((item) => {
       result.json({
-        message: "success, you can use the bot now"
+        message: "success, you can use the bot now",
+        spaceId: spaceId
+      
       });
 
     });
