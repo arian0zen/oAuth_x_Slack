@@ -70,9 +70,9 @@ app.get("/clickuplogin/:name", async (req, res) => {
     .post(
       `https://api.clickup.com/api/v2/space/${spaceId}/list`,
       {
-        body: {
+        body: JSON.stringify({
           name: "added from slackUp"
-        }
+        })
       },
       {
         headers: { 
@@ -81,9 +81,7 @@ app.get("/clickuplogin/:name", async (req, res) => {
         }
       }
     )
-    .then(response => {
-      console.log(response);
-    });
+    .catch(Error);
 
 
   
