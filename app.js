@@ -1,4 +1,5 @@
 require("dotenv").config();
+const fetch = require('node-fetch');
 const express = require("express");
 const mongoose = require("mongoose");
 const axios = require("axios");
@@ -71,22 +72,21 @@ app.get("/clickuplogin/:name", async (req, res) => {
     var spaceId = getSpace.data.spaces[0].id ;
 
     
-    const addList = await axios
-    .post(
-      `https://api.clickup.com/api/v2/space/${spaceId}/list`,
-      {
-        body: JSON.stringify({
-          name: "added from slackUp"
-        })
-      },
-      {
-        headers: { 
-          'Authorization': token,
-          'Content-Type' : 'application/json' 
-        }
-      }
-    )
-    .catch(Error);
+    var body_add = {name: 'arian shaikh'}
+    var headers_add =  {
+      'Content-Type': 'application/json',
+      Authorization: '61229302_dee5bfed31825831408aa07ce1119d41393eb2d6'
+    }
+    var addList = await axios
+    .post(`https://api.clickup.com/api/v2/space/${spaceId}/list`,
+    body_add,
+    {headers_add})
+    .then(response => {console.log(response.data)} )
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+    
+    const addedList_id = addList.id;
 
 
   
@@ -98,14 +98,15 @@ app.get("/clickuplogin/:name", async (req, res) => {
     newUSer.save().then((item) => {
       result.json({
         message: "success, you can use the bot now",
-        spaceId: spaceId,
-        response: addList
+        listId: addedList_id 
       
       });
 
     });
   });
 });
+
+
 
 
 
