@@ -72,21 +72,23 @@ app.get("/clickuplogin/:name", async (req, res) => {
     var spaceId = getSpace.data.spaces[0].id ;
 
     
-    var body_add = {name: 'arian shaikh'}
-    var headers_add =  {
+    var body_add = {
+      name: 'Tasks added from SlackUp',
+      status: 'red'
+    }
+    var headers =  {
       'Content-Type': 'application/json',
       Authorization: token
     }
     var addList = await axios
     .post(`https://api.clickup.com/api/v2/space/${spaceId}/list`,
     body_add,
-    {headers_add})
-    .then(response => {console.log(response.data)} )
-        .catch(error => {
-          console.error('There was an error!', error);
-        });
+    {headers})
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
     
-    const addedList_id = addList.id;
+    const addedList_id = addList.data.id;
 
 
   
