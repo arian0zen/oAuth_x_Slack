@@ -19,7 +19,8 @@ mongoose.connect(
 const usersSchema = mongoose.Schema({
   name: String,
   token: String,
-  clickup_name: String
+  clickup_name: String,
+  slackList_id: String
 });
 
 const User = mongoose.model("User", usersSchema);
@@ -95,12 +96,13 @@ app.get("/clickuplogin/:name", async (req, res) => {
     let newUSer = new User({
       name: user_slack,
       token: token,
-      clickup_name: username
+      clickup_name: username,
+      slackList_id: addedList_id
+
     });
     newUSer.save().then((item) => {
       result.json({
-        message: "success, you can use the bot now",
-        listId: addedList_id 
+        message: "success, you can use the bot now"
       
       });
 
