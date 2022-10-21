@@ -117,7 +117,10 @@ app.get('/inactive', async (req, res) => {
   .catch(err => console.log(err));
 })
 
-
+setInterval(function() {
+  // do something here
+  console.log('interval',new Date().toLocaleString());
+}, 5000);
 
 
 let port = process.env.PORT;
