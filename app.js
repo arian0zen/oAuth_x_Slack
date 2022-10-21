@@ -111,12 +111,10 @@ app.get("/clickuplogin/:name", async (req, res) => {
 });
 
 
-app.get('/inactive', (req, res) => {
-  const dummy = axios
-      .get(
-        `https://slackintegratedclickup.onrender.com/inactive`, header_token
-      )
-      .catch(Error);
+app.get('/inactive', async (req, res) => {
+  await fetch('https://slackintegratedclickup.onrender.com/inactive')
+  .then(res => res.json())
+  .catch(err => console.log(err));
 })
 
 
