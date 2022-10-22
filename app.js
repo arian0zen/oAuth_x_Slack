@@ -115,13 +115,14 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 setInterval(function() {
   // do something here
-  console.log('interval',new Date().toLocaleString());
-  app.get('/inactive', async (req, res) => {
-    await fetch('https://slackintegratedclickup.onrender.com/inactive')
+  // console.log('interval',new Date().toLocaleString());
+  
+    fetch('https://slackintegratedclickup.onrender.com/inactive')
     .then(res => res.json())
+    .then(json => console.log(json))
     .catch(err => console.log(err));
-  })
-}, 840000);
+  
+}, 1000);
 
 
 let port = process.env.PORT;
