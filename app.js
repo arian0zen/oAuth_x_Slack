@@ -124,15 +124,15 @@ app.get("/clickuplogin/:name", async (req, res) => {
   
 // }, 1000);
 
-// const job = cron.schedule("*/1 * * * *", () => {
-//   console.log(new Date().toLocaleString());
-//   fetch('https://slackintegratedclickup.onrender.com/inactive')
-//   .then(res => res.json())
-//   // .then(json => console.log(json))
-//   .catch(err => console.log(err));
-// });
+const job = cron.schedule("*/1 * * * *", () => {
+  console.log(new Date().toLocaleString());
+  fetch('https://slackintegratedclickup.onrender.com/inactive')
+  .then(res => res.json())
+  // .then(json => console.log(json))
+  .catch(err => console.log(err));
+});
 
-// job.start();
+job.start();
 
 
 let port = process.env.PORT;
