@@ -135,12 +135,12 @@ app.get("/clickuplogin/:name", async (req, res) => {
 // job.start();
 
 
-app.get('/inactive', (req, res) => {
-  fetch('https://slackintegratedclickup.onrender.com/inactive')
-  .then(res => res.json())
-  // .then(json => console.log(json))
-  .catch(err => console.log(err));
-})
+// app.get('/inactive', (req, res) => {
+//   fetch('https://slackintegratedclickup.onrender.com/inactive')
+//   .then(res => res.json())
+//   // .then(json => console.log(json))
+//   .catch(err => console.log(err));
+// })
 
 
 let port = process.env.PORT;
