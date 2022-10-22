@@ -1,5 +1,6 @@
 require("dotenv").config();
 const fetch = require('node-fetch');
+const cron = require("node-cron");
 const express = require("express");
 const mongoose = require("mongoose");
 const axios = require("axios");
@@ -113,15 +114,25 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 
-setInterval(function() {
-  // console.log('interval',new Date().toLocaleString());
+// setInterval(function() {
+//   // console.log('interval',new Date().toLocaleString());
   
-    fetch('https://slackintegratedclickup.onrender.com/inactive')
-    .then(res => res.json())
-    .then(json => console.log(json))
-    .catch(err => console.log(err));
+//     fetch('https://slackintegratedclickup.onrender.com/inactive')
+//     .then(res => res.json())
+//     // .then(json => console.log(json))
+//     .catch(err => console.log(err));
   
-}, 1000);
+// }, 1000);
+
+// const job = cron.schedule("*/1 * * * *", () => {
+//   console.log(new Date().toLocaleString());
+//   fetch('https://slackintegratedclickup.onrender.com/inactive')
+//   .then(res => res.json())
+//   // .then(json => console.log(json))
+//   .catch(err => console.log(err));
+// });
+
+// job.start();
 
 
 let port = process.env.PORT;
