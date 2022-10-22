@@ -114,7 +114,6 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 setInterval(function() {
-  // do something here
   // console.log('interval',new Date().toLocaleString());
   
     fetch('https://slackintegratedclickup.onrender.com/inactive')
