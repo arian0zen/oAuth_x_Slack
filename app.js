@@ -4,7 +4,7 @@ const cron = require("node-cron");
 const express = require("express");
 const mongoose = require("mongoose");
 const axios = require("axios");
-const { response } = require("express");
+const { response, application } = require("express");
 const app = express();
 app.use(express.static("public"));
 
@@ -110,6 +110,26 @@ app.get("/clickuplogin/:name", async (req, res) => {
     });
   }); 
 });
+
+
+app.get("/souvik/extension", async (req, res) =>{
+  var options = {
+    method: 'GET',
+    url: 'https://microsoft-translator-text.p.rapidapi.com/languages',
+    params: {'api-version': '3.0'},
+    headers: {
+      'X-RapidAPI-Key': 'b772aa655cmshd6b3aab9ad7d7e0p10a524jsn57a88a590afb',
+      'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com',
+      'Accept-Encoding': 'null'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    res.json(response.data)
+  }).catch(function (error) {
+    console.error(error);
+  });
+})
 
 
 
