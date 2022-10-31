@@ -156,14 +156,6 @@ app.get("/souvik/extension", async (req, res) =>{
 
 
 
-// app.get('/inactive', (req, res) => {
-//   fetch('https://slackintegratedclickup.onrender.com/inactive')
-//   .then(res => res.json())
-//   // .then(json => console.log(json))
-//   .catch(err => console.log(err));
-// })
-
-
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
