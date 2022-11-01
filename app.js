@@ -113,6 +113,11 @@ app.get("/clickuplogin/:name", async (req, res) => {
 
 
 app.get("/souvik/extension", async (req, res) =>{
+  res.header("Access-Control-Allow-Origin", "*")
+	res.header(
+	  "Access-Control-Allow-Headers",
+	  "Origin, X-Requested, Content-Type, Accept Authorization"
+	)
   var options = {
     method: 'GET',
     url: 'https://microsoft-translator-text.p.rapidapi.com/languages',
