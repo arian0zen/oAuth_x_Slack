@@ -123,7 +123,7 @@ app.get("/souvik/extension", async (req, res) =>{
     url: 'https://microsoft-translator-text.p.rapidapi.com/languages',
     params: {'api-version': '3.0'},
     headers: {
-      'X-RapidAPI-Key': 'b772aa655cmshd6b3aab9ad7d7e0p10a524jsn57a88a590afb',
+      'X-RapidAPI-Key': process.env.MICROSOFT_TRANSLATION_API_KEY,
       'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com',
       'Accept-Encoding': 'null'
     }
