@@ -140,16 +140,6 @@ app.get("/souvik/extension", async (req, res) =>{
 
 
 
-// setInterval(function() {
-//   // console.log('interval',new Date().toLocaleString());
-  
-//     fetch('https://slackintegratedclickup.onrender.com/inactive')
-//     .then(res => res.json())
-//     // .then(json => console.log(json))
-//     .catch(err => console.log(err));
-  
-// }, 1000);
-
 
 
 
