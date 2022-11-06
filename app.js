@@ -150,7 +150,7 @@ if (port == null || port == "") {
 }
 
 app.listen(port, () => {
-  console.log("listening on port " + port);
+  console.log("listening to the port " + port);
 });
 
 
