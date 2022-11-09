@@ -116,6 +116,9 @@ app.get("/clickuplogin/:name", async (req, res) => {
 router.get('/privacy',function(req,res){
   res.sendFile(path.join(__dirname+'/privacy.html'));
 });
+router.get('/support',function(req,res){
+  res.sendFile(path.join(__dirname+'/support.html'));
+});
 
 app.get("/souvik/extension", async (req, res) =>{
   res.header("Access-Control-Allow-Origin", "*")
