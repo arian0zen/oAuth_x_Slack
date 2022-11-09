@@ -2,6 +2,8 @@ require("dotenv").config();
 const fetch = require('node-fetch');
 const cron = require("node-cron");
 const express = require("express");
+const path = require("path");
+const router = express.Router();
 const mongoose = require("mongoose");
 const axios = require("axios");
 const { response, application } = require("express");
@@ -111,6 +113,9 @@ app.get("/clickuplogin/:name", async (req, res) => {
   }); 
 });
 
+router.get('/privacy',function(req,res){
+  res.sendFile(path.join(__dirname+'/privacy.html'));
+});
 
 app.get("/souvik/extension", async (req, res) =>{
   res.header("Access-Control-Allow-Origin", "*")
@@ -148,7 +153,7 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }
-
+app.use('/', router)
 app.listen(port, () => {
   console.log("listening to the port " + port);
 });
