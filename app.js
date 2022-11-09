@@ -119,6 +119,9 @@ router.get('/privacy',function(req,res){
 router.get('/support',function(req,res){
   res.sendFile(path.join(__dirname+'/support.html'));
 });
+app.get('/directinstall', async (req, res)=>{
+  res.redirect('https://slackintegratedclickup.onrender.com/slack/install');
+})
 
 app.get("/souvik/extension", async (req, res) =>{
   res.header("Access-Control-Allow-Origin", "*")
