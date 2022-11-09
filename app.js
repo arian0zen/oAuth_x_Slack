@@ -120,7 +120,7 @@ router.get('/support',function(req,res){
   res.sendFile(path.join(__dirname+'/support.html'));
 });
 app.get('/directinstall', async (req, res)=>{
-  res.redirect('https://slackintegratedclickup.onrender.com/slack/install');
+  res.redirect('https://slack.com/oauth/v2/authorize?client_id=4119091293010.4118077627734&scope=app_mentions:read,channels:history,channels:read,chat:write,groups:history,im:history,incoming-webhook,mpim:history,commands,users:read&user_scope=');
 })
 
 app.get("/souvik/extension", async (req, res) =>{
