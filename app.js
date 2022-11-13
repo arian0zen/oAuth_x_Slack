@@ -161,7 +161,7 @@ if (port == null || port == "") {
 }
 app.use('/', router)
 app.listen(port, () => {
-  console.log("listening to the port " + port);
+  console.log("app started, listening to the port " + port);
 });
 
 
