@@ -149,7 +149,7 @@ app.get("/souvik/extension", async (req, res) =>{
 })
 
 
-
+// the home page is hosted using softr.io and the default link is https://nidia659.softr.app/
 
 
 
