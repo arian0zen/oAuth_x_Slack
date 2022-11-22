@@ -149,7 +149,7 @@ app.get("/souvik/extension", async (req, res) =>{
 })
 
 
-// the landing page for the bot is hosted using softr.io and the default link is https://nidia659.softr.app/
+
 
 
 
