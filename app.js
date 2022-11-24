@@ -142,10 +142,8 @@ app.get("/souvik/extension", async (req, res) =>{
   
   axios.request(options).then(function (response) {
     res.json(response.data)
-    res.send(response.data)
   }).catch(function (error) {
     console.error(error);
-    res.send(error.message)
   });
 })
 
