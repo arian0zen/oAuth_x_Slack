@@ -124,7 +124,6 @@ app.get('/directinstall', async (req, res)=>{
 })
 
 app.get("/souvik/extension", async (req, res) =>{
-  res.setHeader("Content-Type", "image/svg+xml");
   res.header("Access-Control-Allow-Origin", "*")
 	res.header(
 	  "Access-Control-Allow-Headers",
@@ -142,16 +141,7 @@ app.get("/souvik/extension", async (req, res) =>{
   };
   
   axios.request(options).then(function (response) {
-    res.send(`<svg xmlns="http://www.w3.org/2000/svg" baseProfile="full" height="160" width="400">
-    <rect fill="#fffefe" height="160" rx="5" ry="5" stroke="#e4e2e2" width="400" />
-    <text y="80" x="20"
-        font-size="60">👨‍💻</text>
-    <g font-size="18"><text fill="#2f80ed" x="110" y="40" font-weight="700">Aditya Verma, IIT Kharagpur</text><text
-            fill="#434d58" x="110" y="65">1346 (Pupil) | 1346 (Pupil)</text><text fill="#434d58" x="110" y="90">445
-            Problems Solved</text></g>
-    <g font-size="14" fill="#434d58"><text x="50" y="140">AC ✔️ 50000000</text><text x="170" y="140">TLE ⚠️ 74</text><text
-            x="280" y="140">WA ❌ 276</text></g>
-</svg>`)
+    res.json(response.data)
   }).catch(function (error) {
     console.error(error);
   });
