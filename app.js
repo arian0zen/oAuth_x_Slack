@@ -124,6 +124,7 @@ app.get('/directinstall', async (req, res)=>{
 })
 
 app.get("/souvik/extension", async (req, res) =>{
+  res.setHeader("Content-Type", "image/svg+xml");
   res.header("Access-Control-Allow-Origin", "*")
 	res.header(
 	  "Access-Control-Allow-Headers",
