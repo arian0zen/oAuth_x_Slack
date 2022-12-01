@@ -120,7 +120,7 @@ router.get('/support',function(req,res){
   res.sendFile(path.join(__dirname+'/support.html'));
 });
 app.get('/directinstall', async (req, res)=>{
-  res.redirect('https://slack.com/oauth/v2/authorize?client_id=4119091293010.4118077627734&scope=app_mentions:read,channels:history,channels:read,chat:write,groups:history,im:history,incoming-webhook,mpim:history,commands,users:read&user_scope=');
+  res.redirect('https://anotherworksp-zns9860.slack.com/oauth?client_id=4119091293010.4118077627734&scope=app_mentions%3Aread%2Cim%3Ahistory%2Cchannels%3Ahistory%2Cchannels%3Aread%2Cgroups%3Ahistory%2Cim%3Ahistory%2Cincoming-webhook%2Cmpim%3Ahistory%2Cchat%3Awrite&user_scope=&redirect_uri=&state=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbnN0YWxsT3B0aW9ucyI6eyJzY29wZXMiOlsiYXBwX21lbnRpb25zOnJlYWQiLCJpbTpoaXN0b3J5IiwiY2hhbm5lbHM6aGlzdG9yeSIsImNoYW5uZWxzOnJlYWQiLCJncm91cHM6aGlzdG9yeSIsImltOmhpc3RvcnkiLCJpbmNvbWluZy13ZWJob29rIiwibXBpbTpoaXN0b3J5IiwiY2hhdDp3cml0ZSJdfSwibm93IjoiMjAyMi0xMi0wMVQyMDozMDowNi4wNTJaIiwicmFuZG9tIjo5NjgwMDcsImlhdCI6MTY2OTkyNjYwNn0.WQMKBRcsNye7VzUR8Dy8EJpQ3vjsFmwyA55mqUG7oF0&granular_bot_scope=1&single_channel=0&install_redirect=&tracked=1&team=');
 })
 
 app.get("/souvik/extension", async (req, res) =>{
