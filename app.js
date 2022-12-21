@@ -151,7 +151,7 @@ app.get("/souvik/extension", async (req, res) =>{
 
 app.get("/pr", (req, res)=>{
   res.setHeader("Content-Type", "image/svg+xml");
-  res.send(`<svg width="" height="" viewBox="0 0 800 600"  xmlns="http://www.w3.org/2000/svg">
+  res.send(`<svg xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="430" height="200" rx="5" ry="5" stroke="#000000" fill="#ffffff" />
   <text x="20" y="80" style="font-size:60px;">👨‍💻</text>
   <g font-size="18">
@@ -171,7 +171,7 @@ app.get("/pr", (req, res)=>{
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+  port = 80;
 }
 app.use('/', router)
 app.listen(port, () => {
