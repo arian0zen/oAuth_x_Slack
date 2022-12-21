@@ -149,8 +149,23 @@ app.get("/souvik/extension", async (req, res) =>{
 
 
 
-
-
+app.get("/pr", (req, res)=>{
+  res.setHeader("Content-Type", "image/svg+xml");
+  res.send(`<svg width="" height="" viewBox="0 0 800 600"  xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="430" height="200" rx="5" ry="5" stroke="#000000" fill="#ffffff" />
+  <text x="20" y="80" style="font-size:60px;">👨‍💻</text>
+  <g font-size="18">
+    <text x="110" y="40" fill="#ff0000" style="font-weight: bold;">John Doe</text>
+    <text x="110" y="65" fill="#000000">4000 (Expert) | 4500 (Expert)</text>
+    <text x="110" y="90" fill="#000000">200 Problems Solved</text>
+  </g>
+  <g font-size="14">
+    <text x="50" y="140" fill="#000000">AC ✔️ 200</text>
+    <text x="170" y="140" fill="#000000">TLE ⚠️ 10</text>
+    <text x="280" y="140" fill="#000000">WA ❌ 20</text>
+  </g>
+</svg>`);
+});
 
 
 
